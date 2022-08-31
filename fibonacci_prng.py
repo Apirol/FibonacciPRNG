@@ -20,4 +20,7 @@ def rand_fibonacci(n, a=55, b=24, X_0=3, a_fib=1291, c_fib=4621, m_fib=21870, ba
 
 
 def init_buffer(X_0=3, a=1291, c=4621, m=21870):
-    return [(a * X_0 + c) % m for i in range(10000)]
+    res = [X_0]
+    for i in range(1, 10000):
+        res.append((a * res[i - 1] + c) % m)
+    return res
