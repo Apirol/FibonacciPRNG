@@ -12,14 +12,14 @@ def rand_fibonacci(n, a=55, b=24, X_0=3, a_fib=1291, c_fib=4621, m_fib=21870, ba
     b_index = n - b
     if len(rand_fibonacci.buffer) == 0:
         rand_fibonacci.buffer = init_buffer(X_0, a_fib, c_fib, m_fib)
-    for i in range(2**128):
+    for i in range(2**base):
         value = (rand_fibonacci.buffer[a_index] + rand_fibonacci.buffer[b_index]) % base
         del rand_fibonacci.buffer[a_index]
         rand_fibonacci.buffer.append(value)
         yield value
 
 
-def init_buffer(X_0=3, a=1291, c=4621, m=21870):
+def init_buffer(X_0=4, a=1291, c=4621, m=21870):
     res = [X_0]
     for i in range(1, 10000):
         res.append((a * res[i - 1] + c) % m)
